@@ -18,9 +18,8 @@ public class UserRepositoryImpl implements UserRepository{
     private JdbcTemplate template;
 
     @Autowired
-    public void setTemplate(DataSource dataSource) {
-        template = new JdbcTemplate();
-        template.setDataSource(dataSource);
+    public void setTemplate(JdbcTemplate jdbcTemplate) {
+        this.template = jdbcTemplate;
     }
 
     public User findById(Long id) {

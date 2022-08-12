@@ -16,3 +16,15 @@ CREATE TABLE IF NOT EXISTS sessions (
         FOREIGN KEY (user_id)
             REFERENCES users(id)
 );
+
+CREATE TABLE IF NOT EXISTS images (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT,
+    uuid UUID,
+    name TEXT,
+    mime TEXT,
+    size BIGINT,
+    CONSTRAINT users
+        FOREIGN KEY (user_id)
+            REFERENCES users(id)
+);

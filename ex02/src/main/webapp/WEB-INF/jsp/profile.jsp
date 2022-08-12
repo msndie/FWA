@@ -2,10 +2,21 @@
 <%@ page import="java.util.List" %>
 <%@ page import="edu.school21.cinema.models.Session" %>
 <%@ page import="edu.school21.cinema.models.User" %>
+<%@ page import="edu.school21.cinema.models.Image" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% List<Session> sessionList = (List<Session>) request.getSession().getAttribute("SessionAttributes"); %>
+<% List<Image> imageList = (List<Image>) request.getSession().getAttribute("Images"); %>
+<% User u = (User) request.getSession().getAttribute("UserAttributes"); %>
 
 <style>
+    .info-table table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    .info-table th, td {
+        padding: 5px;
+        text-align: left;
+    }
     .scroll-table-body {
         height: 300px;
         overflow-x: auto;
@@ -14,7 +25,7 @@
         border-bottom: 1px solid #eee;
     }
     .scroll-table table {
-        width:100%;
+        width:50%;
         table-layout: fixed;
         border: none;
     }
@@ -40,7 +51,6 @@
         background: #f3f3f3;
     }
 
-    /* Стили для скролла */
     ::-webkit-scrollbar {
         width: 6px;
     }
@@ -50,53 +60,37 @@
     ::-webkit-scrollbar-thumb {
         box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     }
-    /*body {*/
-    /*    background-color: black;*/
-    /*}*/
-
-    /*tbody tr:nth-child(odd) {*/
-    /*    background-color: #ff33cc;*/
-    /*}*/
-
-    /*tbody tr:nth-child(even) {*/
-    /*    background-color: #e495e4;*/
-    /*}*/
-
-    /*tbody tr {*/
-    /*    display:block;*/
-    /*    overflow:auto;*/
-    /*    height:200px;*/
-    /*    width:100%;*/
-    /*}*/
-
-    /*thead tr {*/
-    /*    display: block;*/
-    /*}*/
-
-    /*table {*/
-    /*    background-color: #ff33cc;*/
-    /*    text-align: center;*/
-    /*    margin: auto;*/
-    /*    width: 50vw;*/
-    /*}*/
-
-    /*#zhaba {*/
-    /*    color: #ff33cc;*/
-    /*    text-align: center;*/
-    /*}*/
 </style>
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Profile</title>
 </head>
 <body>
-    <% User u = (User) request.getSession().getAttribute("UserAttributes"); %>
-    <H1>
-        <%=String.format("Welcome back, %s %s\n%s\n", u.getFirstName(), u.getLastName(), u.getEmail())%>
-    </H1>
-    <div class="scroll-table">
+
+    <span class="info-table">
         <table>
+            <tr>
+                <th>First name:</th>
+                <td><%=u.getFirstName()%></td>
+            </tr>
+            <tr>
+                <th>Last name:</th>
+                <td><%=u.getLastName()%></td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td><%=u.getEmail()%></td>
+            </tr>
+            <tr>
+                <th>Telephone:</th>
+                <td><%=u.getPhoneNumber()%></td>
+            </tr>
+        </table>
+    </span>
+
+    <span class="scroll-table">
+        <table style="display: inline-table">
             <thead>
                 <tr>
                     <th>Date</th>
@@ -105,8 +99,8 @@
                 </tr>
             </thead>
         </table>
-        <div class="scroll-table-body">
-            <table>
+        <span class="scroll-table-body">
+            <table style="display: inline-table">
                 <tbody>
                     <c:forEach var="s" items="<%= sessionList %>">
                     <tr>
@@ -117,8 +111,34 @@
                     </c:forEach>
                 </tbody>
             </table>
-        </div>
-    </div>
+        </span>
+    </span>
+
+    <span class="scroll-table">
+        <table style="display: inline-table">
+            <thead>
+            <tr>
+                <th>File name</th>
+                <th>Size</th>
+                <th>MIME</th>
+            </tr>
+            </thead>
+        </table>
+        <span class="scroll-table-body">
+            <table style="display: inline-table">
+                <tbody>
+                <c:forEach var="i" items="<%= imageList %>">
+                    <tr>
+                        <td> <a href="images/${i.uuid.toString()}" target="_blank">${i.name}</a></td>
+                        <td>${i.sizeInStr}</td>
+                        <td>${i.mime}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </span>
+    </span>
+
     <br>
     <h3>File Upload:</h3>
     Select a file to upload: <br><br>

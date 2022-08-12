@@ -17,9 +17,8 @@ public class SessionRepositoryImpl implements SessionRepository {
     private JdbcTemplate template;
 
     @Autowired
-    public void setTemplate(DataSource dataSource) {
-        template = new JdbcTemplate();
-        template.setDataSource(dataSource);
+    public void setTemplate(JdbcTemplate jdbcTemplate) {
+        this.template = jdbcTemplate;
     }
 
     public Session findById(Long id) {

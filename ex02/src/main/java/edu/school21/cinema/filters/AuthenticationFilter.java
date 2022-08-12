@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebFilter(filterName = "AuthenticationFilter", urlPatterns = {"/profile", "/signIn", "/signUp"})
+@WebFilter(filterName = "AuthenticationFilter", urlPatterns = {"/profile", "/signIn", "/signUp", "/images/*"})
 public class AuthenticationFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }

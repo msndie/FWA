@@ -1,5 +1,7 @@
 package edu.school21.cinema.servlets;
 
+import edu.school21.cinema.models.User;
+import edu.school21.cinema.services.ImageService;
 import org.springframework.context.ApplicationContext;
 
 import javax.servlet.*;
@@ -10,13 +12,13 @@ import java.io.IOException;
 @WebServlet(name = "Profile", value = "/profile")
 public class Profile extends HttpServlet {
 
-    private String path;
+    private ImageService imageService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext context = config.getServletContext();
         ApplicationContext springContext = (ApplicationContext) context.getAttribute("SpringContext");
-        path = context.getRealPath("") + springContext.getBean("getStoragePath", String.class);
+        imageService = springContext.getBean(ImageService.class);
     }
 
     @Override
@@ -24,7 +26,9 @@ public class Profile extends HttpServlet {
         if (response.isCommitted()) {
             return;
         }
-        request.getSession().setAttribute("Path", path);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("UserAttributes");
+        session.setAttribute("Images", imageService.getAllImagesByUserId(user.getId()));
         RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
         view.forward(request, response);
     }

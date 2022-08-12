@@ -7,6 +7,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.File;
+import java.nio.file.Files;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.util.Enumeration;
@@ -20,6 +22,11 @@ public class ContextListener implements ServletContextListener, HttpSessionListe
         AnnotationConfigApplicationContext context
                 = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         sce.getServletContext().setAttribute("SpringContext", context);
+        String path = context.getBean("getStoragePath", String.class);
+        File folder = new File(path);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
     }
 
     @Override

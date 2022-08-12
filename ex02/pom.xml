@@ -73,7 +73,7 @@
     </dependencies>
 
     <build>
-        <finalName>cinema</finalName>
+        <finalName>fwa</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -115,7 +115,6 @@
                     <version>1.9.13</version>
                     <configuration>
                         <container>
-                            <home>container</home>
                             <containerId>tomcat9x</containerId>
                             <type>embedded</type>
                         </container>

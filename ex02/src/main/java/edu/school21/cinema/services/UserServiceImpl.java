@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
             user.setId(userFromDB.getId());
             user.setFirstName(userFromDB.getFirstName());
             user.setLastName(userFromDB.getLastName());
+            user.setPhoneNumber(userFromDB.getPhoneNumber());
             return true;
         }
         return false;

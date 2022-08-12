@@ -1,24 +1,23 @@
 package edu.school21.cinema.config;
 
 import com.zaxxer.hikari.HikariDataSource;
-import edu.school21.cinema.repositories.SessionRepository;
-import edu.school21.cinema.repositories.SessionRepositoryImpl;
-import edu.school21.cinema.repositories.UserRepository;
-import edu.school21.cinema.repositories.UserRepositoryImpl;
-import edu.school21.cinema.services.SessionService;
-import edu.school21.cinema.services.SessionServiceImpl;
-import edu.school21.cinema.services.UserService;
-import edu.school21.cinema.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 @Configuration
+@ComponentScan("edu.school21.cinema")
 @PropertySource("classpath:../application.properties")
-//@PropertySource("file:src/main/webapp/WEB-INF/application.properties")
 public class ApplicationConfig {
 
     @Value("${db.url}")
@@ -38,37 +37,22 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public HikariDataSource getDataSource() {
+    public JdbcTemplate getJdbcTemplate() throws IOException {
         HikariDataSource ds = new HikariDataSource();
         ds.setJdbcUrl(url);
         ds.setUsername(user);
         ds.setPassword(pass);
         ds.setDriverClassName(driver);
-        return ds;
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(ds);
+        String schema = new String(Files.readAllBytes(Paths.get("src/main/resources/sql/schema.sql")), StandardCharsets.UTF_8);
+        String data = new String(Files.readAllBytes(Paths.get("src/main/resources/sql/data.sql")), StandardCharsets.UTF_8);
+        jdbcTemplate.execute(schema);
+        jdbcTemplate.execute(data);
+        return jdbcTemplate;
     }
 
     @Bean
     public PasswordEncoder getEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public UserRepository getUserRepository() {
-        return new UserRepositoryImpl();
-    }
-
-    @Bean
-    public UserService getUserService() {
-        return new UserServiceImpl();
-    }
-
-    @Bean
-    public SessionService getSessionService() {
-        return new SessionServiceImpl();
-    }
-
-    @Bean
-    public SessionRepository getSessionRepository() {
-        return new SessionRepositoryImpl();
     }
 }
