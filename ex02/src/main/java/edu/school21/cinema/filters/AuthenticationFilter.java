@@ -22,7 +22,7 @@ public class AuthenticationFilter implements Filter {
         if (obj == null && path.equals("/profile")) {
             res.sendError(403, "Forbidden");
         } else if (obj != null && (path.equals("/signIn") || path.equals("/signUp"))) {
-            res.sendRedirect("/profile");
+            res.sendRedirect("profile");
         }
         chain.doFilter(request, response);
     }

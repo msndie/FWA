@@ -1,6 +1,10 @@
 package edu.school21.cinema.utils;
 
-public class SizeConverter {
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public class Utils {
     public static String convert(long size) {
         String cnt_size;
         double size_kb = (double) size / 1000;
@@ -12,5 +16,13 @@ public class SizeConverter {
             cnt_size = String.format("%.2fKB", size_kb);
         }
         return cnt_size;
+    }
+
+    public static void copyData(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[8 * 1024];
+        int len;
+        while ((len = in.read(buffer)) > 0) {
+            out.write(buffer, 0, len);
+        }
     }
 }

@@ -9,4 +9,5 @@ public interface ImageService {
     void addImage(Image image);
     List<Image> getAllImagesByUserId(Long id);
     Image getByUUID(UUID uuid);
+    void deleteImage(Image image);
 }

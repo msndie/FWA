@@ -1,6 +1,6 @@
 package edu.school21.cinema.models;
 
-import edu.school21.cinema.utils.SizeConverter;
+import edu.school21.cinema.utils.Utils;
 
 import java.util.UUID;
 
@@ -85,6 +85,6 @@ public class Image {
     }
 
     public String getSizeInStr() {
-        return SizeConverter.convert(size);
+        return Utils.convert(size);
     }
 }

@@ -2,6 +2,7 @@ package edu.school21.cinema.repositories;
 
 import edu.school21.cinema.models.Image;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -57,7 +58,7 @@ public class ImageRepositoryImpl implements ImageRepository {
                 new BeanPropertyRowMapper<>(Image.class), id);
     }
 
-    public Image findByUUID(UUID uuid) {
+    public Image findByUUID(UUID uuid) throws DataAccessException {
         return template.queryForObject("SELECT * FROM images WHERE uuid = ?",
                 new BeanPropertyRowMapper<>(Image.class),
                 uuid);

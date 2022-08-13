@@ -3,6 +3,7 @@ package edu.school21.cinema.services;
 import edu.school21.cinema.models.Image;
 import edu.school21.cinema.repositories.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +28,14 @@ public class ImageServiceImpl implements ImageService {
     }
 
     public Image getByUUID(UUID uuid) {
-        return imageRepository.findByUUID(uuid);
+        try {
+            return imageRepository.findByUUID(uuid);
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+
+    public void deleteImage(Image image) {
+        imageRepository.delete(image.getId());
     }
 }

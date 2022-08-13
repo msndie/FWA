@@ -3,7 +3,7 @@ package edu.school21.cinema.servlets;
 import edu.school21.cinema.models.Image;
 import edu.school21.cinema.models.User;
 import edu.school21.cinema.services.ImageService;
-import edu.school21.cinema.utils.SizeConverter;
+import edu.school21.cinema.utils.Utils;
 import org.springframework.context.ApplicationContext;
 
 import javax.servlet.*;
@@ -15,9 +15,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 @WebServlet(name = "Images", value = "/images/*")
-@MultipartConfig(
-        maxFileSize = 1024 * 1024 * 10
-)
+@MultipartConfig
 public class Images extends HttpServlet {
 
     private String path;
@@ -49,10 +47,11 @@ public class Images extends HttpServlet {
                     response.setContentType(image.getMime());
                     response.setContentLengthLong(image.getSize());
                     try (FileInputStream fis = new FileInputStream(path + image.getUuid() + "." + image.getMime().split("/")[1])) {
-                        fis.transferTo(response.getOutputStream());
+                        Utils.copyData(fis, response.getOutputStream());
                         response.getOutputStream().close();
                     } catch (FileNotFoundException e) {
                         response.sendError(HttpServletResponse.SC_NOT_FOUND, "Image not found! Probably it does not exist any more)))");
+                        imageService.deleteImage(image);
                     }
                     return;
                 }
