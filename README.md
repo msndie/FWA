@@ -1,4 +1,4 @@
-# FWA ( Cinema in future :D )
+# FWA
 This project is part of the Java branch in holygraph of School21.
 
 # Now you may ask what is the point?
@@ -10,4 +10,4 @@ You need to create an empty database in postgres and write your credentials in `
 You dont need tomcat to run this, but you need maven.
 
 # Command to run
-mvn org.codehaus.cargo:cargo-maven3-plugin:run
+mvn clean package org.codehaus.cargo:cargo-maven3-plugin:run
