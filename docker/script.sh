@@ -1,2 +1,3 @@
-/usr/local/tomcat/bin/startup.sh
-mvn -e install tomcat7:deploy
+mvn package
+cp target/fwa.war /usr/local/tomcat/webapps
+/usr/local/tomcat/bin/catalina.sh run

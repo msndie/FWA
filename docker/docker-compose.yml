@@ -1,0 +1,23 @@
+services:
+  tom:
+    build: .
+    container_name: tom
+    ports:
+      - "8080:8080"
+    networks:
+      - net
+
+  sql:
+    image: postgres
+    environment:
+      POSTGRES_USER: myUser
+      POSTGRES_PASSWORD: myPass
+      POSTGRES_DB: fwa
+    ports:
+      - "5432:5432"
+    networks:
+      - net
+
+networks:
+  net:
+   driver: bridge
