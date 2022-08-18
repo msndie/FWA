@@ -13,6 +13,11 @@ You dont need tomcat to run this, but you need maven.
 mvn clean package org.codehaus.cargo:cargo-maven3-plugin:run
 
 # Docker
-You can run it with docker-compose, just build it and run.
+You can run it with docker-compose.
+
+```
+cd docker
+docker-compose up --build
+```
 
 # localhost:8080/fwa is entrypoint for a website
