@@ -41,13 +41,8 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <div class="action">
-                        <a href="profile">
-                            <button>Profile</button>
-                        </a>
-                    </div>
                     <div class="px-4 py-5 my-5 text-center">
-                        <h1 class="display-6 mb-4">You're already authorized/h1>
+                        <h1 class="display-6 mb-4">You're already authorized</h1>
                         <div class="col-lg-6 mt-4 mx-auto">
                             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                                 <a class="btn btn-primary btn-lg px-4 gap-3" href="profile" role="button">To&nbsp;Profile</a>
