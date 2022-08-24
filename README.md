@@ -5,23 +5,23 @@ This project is part of the Java branch in holygraph of School21.
 <summary>Screenshots</summary>
 <details>
 <summary>Index</summary>
-![Image](screenshots/index.png)
+<img src="/screenshots/index.png">
 </details>
 <details>
 <summary>SignUp</summary>
-![Image](screenshots/signUp.png)
+<img src="/screenshots/signUp.png">
 </details>
 <details>
 <summary>SignIn</summary>
-![Image](screenshots/signIn.png)
+<img src="/screenshots/signIn.png">
 </details>
 <details>
 <summary>Default Profile</summary>
-![Image](screenshots/default_profile_page.png)
+<img src="/screenshots/default_profile_page.png">
 </details>
 <details>
 <summary>Profile with avatar</summary>
-![Image](screenshots/profile_page_with_avatar.png)
+<img src="/screenshots/profile_page_with_avatar.png">
 </details>
 </details>
 
