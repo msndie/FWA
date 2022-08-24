@@ -76,7 +76,7 @@
                         <div class="d-flex justify-content-center mb-2">
                             <form action="images/" method="post" enctype="multipart/form-data">
                                 <div class="mb-3 mw-100">
-                                    <input type="file" name="file" accept="image/*" class="form-control">
+                                    <input type="file" name="file" accept="image/*" class="form-control" required>
                                 </div>
                                 <input type="submit" value="Upload File" class="btn btn-outline-primary ms-1">
                             </form>

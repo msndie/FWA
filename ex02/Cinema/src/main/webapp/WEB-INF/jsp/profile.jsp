@@ -25,10 +25,21 @@
 
         body {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             padding-top: 40px;
             padding-bottom: 40px;
             background-color: #f5f5f5;
+        }
+
+        .avatar_img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .card-table {
+            max-height: 50%;
         }
 
         .form-signin {
@@ -65,7 +76,7 @@
                         <div class="d-flex justify-content-center mb-2">
                             <form action="images/" method="post" enctype="multipart/form-data">
                                 <div class="mb-3 mw-100">
-                                    <input type="file" name="file" accept="image/*" class="form-control">
+                                    <input type="file" name="file" accept="image/*" class="form-control" required>
                                 </div>
                                 <input type="submit" value="Upload File" class="btn btn-outline-primary ms-1">
                             </form>
@@ -73,8 +84,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8">
-                <div class="card mb-4">
+            <div class="col-lg-8" style="height: 70vh;">
+                <div class="overflow-auto card card-table mb-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
@@ -104,7 +115,7 @@
                         </c:forEach>
                     </div>
                 </div>
-                <div class="card mb-4">
+                <div class="overflow-auto card card-table mb-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
