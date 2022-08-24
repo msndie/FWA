@@ -42,10 +42,10 @@ public class SignUp extends HttpServlet {
                 req.getParameter("pass"),
                 req.getParameter("email"));
         if (userService.signUp(user)) {
-            view = req.getRequestDispatcher("/WEB-INF/html/signIn.html");
+            res.sendRedirect("signIn");
         } else {
             view = req.getRequestDispatcher("/WEB-INF/html/failedReg.html");
+            view.forward(req, res);
         }
-        view.forward(req, res);
     }
 }

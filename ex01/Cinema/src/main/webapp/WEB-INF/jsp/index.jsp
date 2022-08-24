@@ -32,8 +32,6 @@
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <a class="btn btn-primary btn-lg px-4 gap-3" href="signIn" role="button">Sign&nbsp;In</a>
                 <a class="btn btn-primary btn-lg px-4 gap-3" href="signUp" role="button">Sign&nbsp;Up</a>
-                <!-- <a class="btn btn-primary btn-lg px-4 gap-3" href="../html/signIn.html" role="button">Sign&nbsp;In</a>
-                <a class="btn btn-primary btn-lg px-4 gap-3" href="../html/signUp.html" role="button">Sign&nbsp;Up</a> -->
             </div>
         </div>
     </div>

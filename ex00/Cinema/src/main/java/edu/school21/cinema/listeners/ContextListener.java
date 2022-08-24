@@ -12,7 +12,6 @@ public class ContextListener implements ServletContextListener, HttpSessionListe
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        /* This method is called when the servlet context is initialized(when the Web application is deployed). */
         AnnotationConfigApplicationContext context
                 = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         sce.getServletContext().setAttribute("SpringContext", context);
