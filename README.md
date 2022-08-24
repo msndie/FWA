@@ -1,6 +1,30 @@
 # FWA
 This project is part of the Java branch in holygraph of School21.
 
+<details>
+<summary>Screenshots</summary>
+<details>
+<summary>Index</summary>
+![Image](/screenshots/index.png?raw=true)
+</details>
+<details>
+<summary>SignUp</summary>
+![Image](/screenshots/signUp.png?raw=true)
+</details>
+<details>
+<summary>SignIn</summary>
+![Image](/screenshots/signIn.png?raw=true)
+</details>
+<details>
+<summary>Default Profile</summary>
+![Image](/screenshots/default_profile_page.png?raw=true)
+</details>
+<details>
+<summary>Profile with avatar</summary>
+![Image](/screenshots/profile_page_with_avatar.png?raw=true)
+</details>
+</details>
+
 # Now you may ask what is the point?
 Well, the point is to learn how to work with Java servlets, HTML, CSS, JSP, Jdbc, Spring and Web apps in general.
 This is a single page website with registation, authorization and possibility to load avatars.
