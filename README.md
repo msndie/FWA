@@ -1,5 +1,5 @@
 # FWA
-This project is part of the Java branch in holygraph of School21.
+This project is a part of the Java branch in holygraph of School21.
 
 <details>
 <summary>Screenshots</summary>
@@ -27,7 +27,7 @@ This project is part of the Java branch in holygraph of School21.
 
 # Now you may ask what is the point?
 Well, the point is to learn how to work with Java servlets, HTML, CSS, JSP, Jdbc, Spring and Web apps in general.
-This is a single page website with registation, authorization and possibility to load avatars.
+This is a single page website with registation, authorization, possibility to load avatars and it also saves history of your authorizations.
 
 # What you need to do to launch it?
 You need to create an empty database in postgres and write your credentials in ```application.properties``` file and change path to folder where images will be stored.
