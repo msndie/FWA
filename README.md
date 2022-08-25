@@ -34,7 +34,9 @@ You need to create an empty database in postgres and write your credentials in `
 You dont need tomcat to run this, but you need maven.
 
 # Command to run
+```
 mvn clean package org.codehaus.cargo:cargo-maven3-plugin:run
+```
 
 # Docker
 You can run it with docker-compose.
